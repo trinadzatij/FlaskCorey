@@ -1,8 +1,10 @@
 from flask import Flask, render_template, url_for
 from forms import RegistrationForm, LoginForm
+import uuid
+
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '40cef3df770159c6c087e69906ef718f'
+app.config['SECRET_KEY'] = uuid.uuid4().hex
 
 posts = [
     {
