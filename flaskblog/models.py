@@ -1,7 +1,7 @@
 from flaskblog import db, login_manager
 from datetime import datetime
 from flask_login import UserMixin
-
+import uuid
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -30,3 +30,13 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+class Invite(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    invite_code = db.Column(db.String(36), nullable=False, default=str(uuid.uuid4()))
+    is_used = db.Column(db.Integer, nullable=False, default='0')
+
+    def __repr__(self):
+        return f"Invite('{self.owner_id}', '{self.invite_code}', '{self.is_used}')"
+    
