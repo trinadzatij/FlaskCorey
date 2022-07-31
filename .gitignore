@@ -1,7 +1,9 @@
 todolist.txt
 nohup.out
 flaskblog/site.db
-flaskblog/static/profile_pics
+flaskblog/static/profile_pics/*
+!flaskblog/static/profile_pics/default.jpg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
